@@ -30,6 +30,7 @@ __Features__
  * [SQLite](driver/sqlite3)
  * [MySQL](driver/mysql) ([experimental](https://github.com/axiomzen/migrate/issues/1#issuecomment-58728186))
  * [Neo4j](driver/neo4j)
+ * [Neo4JBolt](driver/neo4jbolt)
  * [Ql](driver/ql)
  * [MongoDB](driver/mongodb)
  * [CrateDB](driver/crate)
