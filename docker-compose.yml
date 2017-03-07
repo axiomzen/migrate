@@ -32,4 +32,8 @@ crate:
 mongo:
   image: mongo:3.2.6
 bolt:
-  image: neo4j
+  image: neo4j:3.1.1
+  environment:
+    - NEO4J_AUTH=neo4j/test
+  ports:
+    - "7687:7687"
