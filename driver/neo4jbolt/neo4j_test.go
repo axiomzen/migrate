@@ -29,9 +29,21 @@ func TestMigrate(t *testing.T) {
 
 	// cleanup tests
 	// If an error dropping the index then ignore it
-	conn.ExecPipeline([]string{`DROP INDEX ON :Yolo(name)`, `MATCH (n:` + labelName + `) DELETE n`})
+	if _, err := conn.ExecNeo(`DROP INDEX ON :Yolo(name)`, nil); err != nil {
+		t.Fatal(err)
+	}
 
-	conn.Close()
+	if _, err := conn.ExecNeo(`MATCH (n:`+labelName+`) DELETE n`, nil); err != nil {
+		t.Fatal(err)
+	}
+
+	// if _, err := conn.ExecPipeline([]string{`DROP INDEX ON :Yolo(name)`, `MATCH (n:` + labelName + `) DELETE n`}); err != nil {
+	// 	t.Fatal(err)
+	// }
+
+	if err := conn.Close(); err != nil {
+		t.Fatal(err)
+	}
 
 	d0 := driver.GetDriver("bolt")
 	d, ok := d0.(*Driver)
