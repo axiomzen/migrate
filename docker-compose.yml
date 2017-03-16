@@ -3,6 +3,7 @@ go: &go
   working_dir: /go/src/github.com/axiomzen/migrate
   volumes:
     - $GOPATH:/go
+    - ~/.netrc:/root/.netrc
 go-test:
   <<: *go
   command: sh -c 'go get -t -v ./... && go test -v ./...'
