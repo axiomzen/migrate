@@ -10,6 +10,7 @@ services:
   - docker
 
 before_install:
+    - echo -e "machine github.com\n  login $CI_USER_TOKEN" >> ~/.netrc
     - curl -L https://github.com/docker/compose/releases/download/1.4.2/docker-compose-`uname -s`-`uname -m` > docker-compose
     - chmod +x docker-compose
     - sudo mv docker-compose /usr/local/bin
