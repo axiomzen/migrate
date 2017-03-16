@@ -1,8 +1,10 @@
 go: &go
   image: golang
   working_dir: /go/src/github.com/axiomzen/migrate
+  echo -e "machine github.com\n  login $CI_USER_TOKEN" >> ~/.netrc
   volumes:
     - $GOPATH:/go
+    - ~/.netrc:/root/.netrc
 go-test:
   <<: *go
   command: sh -c 'go get -t -v ./... && go test -v ./...'
