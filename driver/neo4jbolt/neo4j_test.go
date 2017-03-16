@@ -30,7 +30,8 @@ func TestMigrate(t *testing.T) {
 	// cleanup tests
 	// If an error dropping the index then ignore it
 	if _, err := conn.ExecNeo(`DROP INDEX ON :Yolo(name)`, nil); err != nil {
-		t.Fatal(err)
+		t.Log(err)
+		//t.Fatal(err)
 	}
 
 	if _, err := conn.ExecNeo(`MATCH (n:`+labelName+`) DELETE n`, nil); err != nil {
