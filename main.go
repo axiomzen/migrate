@@ -10,12 +10,12 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/fatih/color"
 	_ "github.com/axiomzen/migrate/driver/bash"
 	_ "github.com/axiomzen/migrate/driver/cassandra"
 	_ "github.com/axiomzen/migrate/driver/crate"
 	_ "github.com/axiomzen/migrate/driver/mysql"
 	_ "github.com/axiomzen/migrate/driver/neo4j"
+	_ "github.com/axiomzen/migrate/driver/neo4jbolt"
 	_ "github.com/axiomzen/migrate/driver/postgres"
 	_ "github.com/axiomzen/migrate/driver/ql"
 	_ "github.com/axiomzen/migrate/driver/sqlite3"
@@ -23,6 +23,7 @@ import (
 	"github.com/axiomzen/migrate/migrate"
 	"github.com/axiomzen/migrate/migrate/direction"
 	pipep "github.com/axiomzen/migrate/pipe"
+	"github.com/fatih/color"
 )
 
 var url = flag.String("url", os.Getenv("MIGRATE_URL"), "")
