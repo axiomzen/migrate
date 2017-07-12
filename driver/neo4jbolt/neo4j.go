@@ -27,6 +27,8 @@ const propertyName = "version"
 // Initialize creates the db connection
 func (d *Driver) Initialize(url string) error {
 	op := bolt.DefaultDriverOptions()
+	op.ReadTimeout = time.Minute * 60
+	op.WriteTimeout = time.Minute * 60
 	op.Addr = url
 	op.ReadTimeout = time.Minute * 60
 	op.WriteTimeout = time.Minute * 60
