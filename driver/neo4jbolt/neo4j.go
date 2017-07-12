@@ -8,6 +8,7 @@ import (
 	"io"
 	log "log"
 	"strings"
+	"time"
 
 	bolt "github.com/axiomzen/golang-neo4j-bolt-driver"
 	driver "github.com/axiomzen/migrate/driver"
@@ -26,6 +27,8 @@ const propertyName = "version"
 // Initialize creates the db connection
 func (d *Driver) Initialize(url string) error {
 	op := bolt.DefaultDriverOptions()
+	op.ReadTimeout = time.Minute * 60
+	op.WriteTimeout = time.Minute * 60
 	op.Addr = url
 	dr := bolt.NewDriverWithOptions(op)
 	conn, err := dr.OpenNeo()
